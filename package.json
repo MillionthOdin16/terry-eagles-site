@@ -1,0 +1,22 @@
+{
+  "name": "terry-eagles-site",
+  "version": "1.0.0",
+  "description": "Terry's Eagles HQ - Ultimate NFL Dashboard",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "nfl",
+    "eagles",
+    "sports",
+    "dashboard"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "author": "",
+  "devDependencies": {
+    "serve": "^14.2.5"
+  }
+}

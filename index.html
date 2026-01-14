@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐅 Terry's Eagles HQ - Ultimate NFL Dashboard</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="eagle-logo">
+                    <img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="Eagles Logo" id="eagles-logo">
+                </div>
+                <div class="site-title">
+                    <h1>TERRY'S <span class="eagles-green">EAGLES</span> HQ</h1>
+                    <p class="tagline">🏈 Ultimate NFL Dashboard</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                <button class="nav-btn" data-section="scoreboard">Live Scores</button>
+                <button class="nav-btn" data-section="roster">Roster</button>
+                <button class="nav-btn" data-section="news">News</button>
+                <button class="nav-btn" data-section="schedule">Schedule</button>
+                <button class="nav-btn" data-section="standings">Standings</button>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle">🌙</button>
+                <div class="last-updated" id="last-updated">Updating...</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <!-- Eagles Status Card -->
+            <div class="eagles-status-card glass-card">
+                <div class="status-header">
+                    <h2>🟢 EAGLES STATUS</h2>
+                    <span class="live-badge" id="live-status">LIVE</span>
+                </div>
+                <div class="eagles-main-stats">
+                    <div class="eagles-record">
+                        <span class="record-value" id="eagles-record">--</span>
+                        <span class="record-label">Record</span>
+                    </div>
+                    <div class="eagles-standing">
+                        <span class="standing-value" id="eagles-standing">--</span>
+                        <span class="standing-label">NFC East</span>
+                    </div>
+                    <div class="eagles-points">
+                        <span class="points-value" id="eagles-ppg">--</span>
+                        <span class="points-label">PPG (Points Per Game)</span>
+                    </div>
+                </div>
+                <div class="next-game-countdown" id="next-game-countdown">
+                    <h3>Next Game</h3>
+                    <div class="countdown-display">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="days">--</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="hours">--</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="minutes">--</span>
+                            <span class="countdown-label">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="seconds">--</span>
+                            <span class="countdown-label">Secs</span>
+                        </div>
+                    </div>
+                    <p class="next-game-info" id="next-game-info">Loading...</p>
+                </div>
+            </div>
+
+            <!-- Quick Stats Grid -->
+            <div class="quick-stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <span class="stat-value" id="offensive-rank">--</span>
+                        <span class="stat-label">Offensive Rank</span>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🛡️</div>
+                    <div class="stat-content">
+                        <span class="stat-value" id="defensive-rank">--</span>
+                        <span class="stat-label">Defensive Rank</span>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🏈</div>
+                    <div class="stat-content">
+                        <span class="stat-value" id="passing-yards">--</span>
+                        <span class="stat-label">Passing Yards</span>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">💨</div>
+                    <div class="stat-content">
+                        <span class="stat-value" id="rushing-yards">--</span>
+                        <span class="stat-label">Rushing Yards</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Players -->
+            <div class="top-players-section glass-card">
+                <h2>🌟 TOP PERFORMERS</h2>
+                <div class="players-carousel" id="top-players">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Recent News Ticker -->
+            <div class="news-ticker glass-card">
+                <div class="ticker-header">
+                    <span class="ticker-label">📰 EAGLES NEWS</span>
+                </div>
+                <div class="ticker-content" id="news-ticker">
+                    <div class="ticker-item">Loading latest news...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Scoreboard Section -->
+        <section id="scoreboard" class="section">
+            <div class="section-header">
+                <h2>📺 LIVE NFL SCORES</h2>
+                <div class="refresh-control">
+                    <span class="refresh-timer">Auto-refresh: <span id="refresh-countdown">30</span>s</span>
+                    <button class="refresh-btn" id="refresh-scores">🔄 Refresh</button>
+                </div>
+            </div>
+            <div class="live-games-container" id="live-games">
+                <!-- Populated by JS -->
+            </div>
+            <div class="upcoming-games glass-card">
+                <h3>📅 UPCOMING GAMES</h3>
+                <div class="upcoming-list" id="upcoming-games">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Roster Section -->
+        <section id="roster" class="section">
+            <div class="section-header">
+                <h2>👥 EAGLES ROSTER</h2>
+                <div class="roster-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="offense">Offense</button>
+                    <button class="filter-btn" data-filter="defense">Defense</button>
+                    <button class="filter-btn" data-filter="special">Special Teams</button>
+                </div>
+            </div>
+            <div class="roster-grid" id="roster-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="section">
+            <div class="section-header">
+                <h2>📰 LATEST EAGLES NEWS</h2>
+            </div>
+            <div class="news-grid" id="news-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="section">
+            <div class="section-header">
+                <h2>📅 2025 SEASON SCHEDULE</h2>
+            </div>
+            <div class="schedule-timeline" id="schedule-timeline">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Standings Section -->
+        <section id="standings" class="section">
+            <div class="section-header">
+                <h2>📈 NFL STANDINGS</h2>
+                <div class="standings-tabs">
+                    <button class="tab-btn active" data-tab="nfc-east">NFC East</button>
+                    <button class="tab-btn" data-tab="nfc">NFC</button>
+                    <button class="tab-btn" data-tab="afc">AFC</button>
+                </div>
+            </div>
+            <div class="standings-container glass-card" id="standings-container">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Player Modal -->
+    <div class="modal-overlay" id="player-modal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="modal-close">×</button>
+            <div class="player-modal-body" id="player-modal-body">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loader">
+            <div class="eagle-loader"></div>
+            <p>Loading Eagles Data...</p>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "terry-eagles-hq",
+  "description": "Ultimate NFL Eagles Dashboard",
+  "type": "static",
+  "source": {
+    "type": "git",
+    "url": "https://github.com/bradley/terry-eagles-site",
+    "branch": "main"
+  },
+  "static": {
+    "root_directory": "/",
+    "build_command": "npm run build",
+    "start_command": "npx serve . -l 3000"
+  },
+  "domains": [
+    {
+      "name": "eagles.bradarr.com",
+      "https": true
+    }
+  ]
+}
