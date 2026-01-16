@@ -4,7 +4,7 @@
   "type": "static",
   "source": {
     "type": "git",
-    "url": "https://github.com/bradley/terry-eagles-site",
+    "url": "https://github.com/MillionthOdin16/terry-eagles-site",
     "branch": "main"
   },
   "static": {
